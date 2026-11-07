@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below (preferred) or the software itself."
+title: "SNLDA: Spatiotemporal Non-Linear Dynamics Assessment of precipitation datasets"
+version: 0.1.0
+# Update date-released when you publish the release; add your ORCID below.
+date-released: 2026-11-07
+authors:
+  - family-names: Duarte
+    given-names: Santiago
+    # orcid: "https://orcid.org/0000-0003-4900-5067"
+repository-code: "https://github.com/sduarte09/SNLDA"
+license: MIT
+keywords:
+  - precipitation
+  - ERA5-Land
+  - non-linear dynamics
+  - hydroinformatics
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Duarte
+      given-names: Santiago
+    - family-names: Corzo
+      given-names: Gerald
+    - family-names: Solomatine
+      given-names: Dimitri
+    - family-names: Uijlenhoet
+      given-names: Remko
+  title: "Spatiotemporal Non-Linear Dynamics Assessment (SNLDA) of ERA5-Land precipitation in the Magdalena River Basin"
+  journal: "Journal of Hydrology: Regional Studies"
+  volume: 63
+  pages: "103083"
+  year: 2026
+  month: 2
+  doi: "10.1016/j.ejrh.2025.103083"
+  url: "https://www.sciencedirect.com/science/article/pii/S2214581825009127"

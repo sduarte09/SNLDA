@@ -1,0 +1,3 @@
+# SNLDA
+SNLDA (SPATIOTEMPORAL NON-LINEAR DYNAMICS ASSESSMENT) framework incorporates three main components: (i) standard performance metrics (correlations, RMSE, and dry spell duration), (ii) rainfall spatiotemporal objects (characterizing precipitation events through attributes such as volumes and start-end centroids), and (iii) non-linear dynamics complexity (reconstructing dynamical behavior from time series and evaluating attractors properties, including the Hurst and Lyapunov exponents). 
+Three files are included in this repository, one for each component, standard errors, attractor properties and spatiotemporal objects.

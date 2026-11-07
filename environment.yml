@@ -1,0 +1,10 @@
+name: snlda
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - netcdf4
+  - jupyterlab
+  - pip:
+      - -e ".[notebooks,test]"
