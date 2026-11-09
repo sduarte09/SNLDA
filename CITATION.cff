@@ -3,7 +3,7 @@ message: "If you use this software, please cite the paper below (preferred) or t
 title: "SNLDA: Spatiotemporal Non-Linear Dynamics Assessment of precipitation datasets"
 version: 0.1.0
 # Update date-released when you publish the release; add your ORCID below.
-date-released: 2026-11-07
+date-released: 2026-11-10
 authors:
   - family-names: Duarte
     given-names: Santiago
