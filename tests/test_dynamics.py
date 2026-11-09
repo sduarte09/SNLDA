@@ -127,6 +127,16 @@ def test_dynamics_on_grid_skips_masked_and_nan_pixels():
 
 
 def test_hurst_exponent_of_white_noise_is_about_one_half():
-    nolds = pytest.importorskip("nolds")
+    try:
+        import nolds
+    except (ImportError, TypeError) as error:  # some nolds releases do not import on old Pythons
+        pytest.skip(f"nolds cannot be imported in this environment: {error}")
     x = np.random.default_rng(0).normal(size=4000)
     assert 0.4 < nolds.hurst_rs(x) < 0.7
+
+
+def test_clear_error_when_nolds_cannot_be_imported():
+    # setting the entry to None makes ``import nolds`` fail with ImportError
+    with mock.patch.dict(sys.modules, {"nolds": None}):
+        with pytest.raises(ImportError):
+            dynamics.dynamics_analysis(_sine(600, 40))

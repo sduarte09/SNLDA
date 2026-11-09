@@ -12,6 +12,8 @@ It was developed for the validation of ERA5-Land daily precipitation in the Magd
 
 ## Installation
 
+SNLDA needs **Python 3.12 or newer**: the `nolds` release it depends on does not import on Python 3.10.
+
 ```bash
 git clone https://github.com/sduarte09/SNLDA.git
 cd SNLDA
@@ -55,11 +57,11 @@ rain, labels, n = objects.rain_objects(precip, threshold=1.0)
 dynamics.dynamics_summary(series)
 ```
 
-Each notebook shows the full workflow for the basin data.
+Each notebook shows the full workflow for the Magdalena data.
 
 ## Expected data layout
 
-The full data is not part of this repository, however a small portion is shared. The notebooks expect:
+The data are not part of this repository. The notebooks expect:
 
 ```
 Data/Local CSV/        daily gauge series (CSV, column "Fecha") and station coordinates (";"-separated)
@@ -77,6 +79,18 @@ pytest
 ```
 
 The tests use small synthetic arrays with known answers and need no data files.
+
+## Differences from the first notebook version
+
+The original notebooks (folder `legacy/`) are the scripts referred to in the paper's data statement. The refactoring changed a few behaviours on purpose. If you compare results with the earlier notebooks, check these points:
+
+- **Rainfall objects are labelled on the binary rain mask.** The notebooks passed the raw rainfall amounts to `skimage.measure.label`, which connects neighbouring cells only if their values are identical. `rain_objects(..., binary=False)` reproduces that old behaviour.
+- **NaN cells are no rain.** Cells outside the basin were NaN and were labelled as foreground objects. The old `drop(0)` line removed the first such object; it is now optional (`drop_first_event`, off by default).
+- **Station-to-cell matching** uses the nearest grid cell. The old search loops could not select the first cell and could run past the last one.
+- **Embedding dimension.** The old code used the 0-based index of the FNN array as the dimension (one less than the real dimension). The default `dimension_offset=0` keeps this; `dimension_offset=1` uses the actual dimension.
+- **Elevation** is matched to the cropped grid by coordinates.
+- The largest `max_events=1000` events are kept (the old `.loc[:1000]` kept 1001).
+- `numba`, `toolz` and `nolitsa` are no longer needed; the GPU code path was removed. `scikit-learn` is still installed because `nolds` needs it for the RANSAC line fit used in the Hurst exponent; without it `nolds` silently switches to a different fit and the Hurst values change.
 
 ## Citation
 

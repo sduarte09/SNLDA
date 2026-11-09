@@ -139,7 +139,7 @@ def dynamics_analysis(x, fnn_threshold=0.2, dimension_offset=0):
     Returns a :class:`DynamicsResult`. If no dimension passes the threshold,
     ``embedding_dim`` is -99 and ``lyapunov`` is ``[-99]``.
     """
-    import nolds  # imported here so the rest of the package works without it
+    nolds = _import_nolds()
 
     x = _series(x)
     lag = optimal_delay(x)
@@ -220,6 +220,19 @@ def dynamics_on_grid(data, mask=None, on_error="nan", progress=None, **kwargs):
         for n in names:
             out[n][i, j] = res[n]
     return out
+
+
+def _import_nolds():
+    """Import ``nolds`` lazily, so the rest of the package works without it."""
+    try:
+        import nolds
+    except (ImportError, TypeError) as error:
+        raise ImportError(
+            "nolds could not be imported in this environment "
+            f"({type(error).__name__}: {error}). Some nolds releases fail to import "
+            "on older Python versions; try a newer Python or a different nolds release."
+        ) from error
+    return nolds
 
 
 def _series(x):
