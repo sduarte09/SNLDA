@@ -1,4 +1,6 @@
 ![tests](https://github.com/sduarte09/SNLDA/actions/workflows/tests.yml/badge.svg)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24094438.svg)](https://doi.org/10.5281/zenodo.24094438)
+
 # SNLDA
 **SNLDA (Spatiotemporal Non-Linear Dynamics Assessment)** is a Python framework for evaluating gridded precipitation datasets against rain gauges. It has three components, which can be used on their own or combined:
 
