@@ -63,7 +63,9 @@ Each notebook shows the full workflow for the Magdalena data.
 
 ## Expected data layout
 
-The data are not part of this repository. The notebooks expect:
+The full data are not part of this repository (CSV files wer added to provide users with data formats). 
+ERALand NC data can be obtained from https://cds.climate.copernicus.eu/ 
+The notebooks expect:
 
 ```
 Data/Local CSV/        daily gauge series (CSV, column "Fecha") and station coordinates (";"-separated)
